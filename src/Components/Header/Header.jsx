@@ -7,7 +7,6 @@ const Header = () => {
   const tabsArray = [
     { tabName: "Home", link: "/" },
     { tabName: "About", link: "/about" },
-    { tabName: "Services", link: "/services" },
     { tabName: "Contact", link: "/contact" },
   ];
   const [value, setValue] = React.useState(0);

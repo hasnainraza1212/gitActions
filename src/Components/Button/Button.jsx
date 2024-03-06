@@ -1,5 +1,6 @@
 import React, { memo } from "react";
 import { Button as MUIButton } from "@mui/material";
+
 const Button = ({
   text = "click me",
   textColor = "white",
@@ -10,11 +11,11 @@ const Button = ({
   return (
     <MUIButton
       sx={{
-        borderRadius: "25px",
-        padding: "15px 30px",
+        borderRadius: "1.5625rem", 
+        padding: "0.9375rem 1.875rem", 
         backgroundColor: BgColor,
         color: textColor,
-        "&:hover": { background: hoverBgColor , color:hoverTextColor},
+        "&:hover": { backgroundColor: hoverBgColor, color: hoverTextColor },
       }}
       variant="contained"
     >
