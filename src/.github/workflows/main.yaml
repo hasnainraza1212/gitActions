@@ -1,0 +1,21 @@
+   name: Build and Test
+on: 
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with: 
+          node-version: 20.x
+      - name: CheckOut code
+        uses: actions/checkout@v3
+      - name: Installing Dependencies
+        run: npm run ci
+      - name: Building Project
+        run: npm run build
+
