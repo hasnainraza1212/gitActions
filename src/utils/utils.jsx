@@ -11,7 +11,9 @@ import envelope from "./../assets/images/envelope.png";
 import marker from "./../assets/images/marker.png";
 import cart from "./../assets/images/cart.png";
 import search from "./../assets/images/search.png";
-
+import greenPhone from "./../assets/images/greenPhone.png";
+import mail from "./../assets/images/mail.png";
+import greenMarker from "./../assets/images/greenMarker.png";
 export const socialMediaHandles = [
   {
     src: twitter,
@@ -56,7 +58,6 @@ export const darkSocialMediaHandles = [
     alt: "social media handle instagram",
     link: "https://www.instagram.com/agrios",
   },
-  
 ];
 export const pages = [
   {
@@ -111,15 +112,32 @@ export const tabsArray = [
   { tabName: "Contact", link: "/contact" },
 ];
 
-
 export const headerIcons = [
   {
-    icon:<img src={search}></img>
-
+    icon: <img src={search}></img>,
   },
   {
-    icon:<img src={cart}></img>
-    
-  }
+    icon: <img src={cart}></img>,
+  },
+];
 
-]
+export const contactHeaderData = [
+  {
+    src: greenPhone,
+    alt:"Call anytime",
+    title:"+ 98 (000) - 9630",
+    subTitle:"Call anytime",
+  },
+  {
+    src: mail,
+    alt:"Send email",
+    title:"ambed@agrios.com",
+    subTitle:"Send email",
+  },
+  {
+    src: greenMarker,
+    alt:"Melbourne, Australia",
+    title:"Melbourne, Australia",
+    subTitle:"380 St Kilda Road",
+  },
+];

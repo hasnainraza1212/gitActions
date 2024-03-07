@@ -1,16 +1,17 @@
 import * as React from "react";
-import {
-  Box,
-  FormControl,
-  OutlinedInput,
-  Tab,
-  Tabs,
-} from "@mui/material";
+import { Box, FormControl, OutlinedInput, Tab, Tabs } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import HeaderIcon from "../HeaderIcon/HeaderIcon";
-import { darkSocialMediaHandles, headerIcons, socialMediaHandles, tabsArray } from "../../utils/utils.jsx";
-import darklogo from "./../../assets/images/darklogo.png"
+import {
+  contactHeaderData,
+  darkSocialMediaHandles,
+  headerIcons,
+  socialMediaHandles,
+  tabsArray,
+} from "../../utils/utils.jsx";
+import darklogo from "./../../assets/images/darklogo.png";
 import SocialIcon from "../SocialIcon/SocialIcon.jsx";
+import ContactComponent from "../ContactComponent/ContactComponent.jsx";
 const Header = () => {
   const navigate = useNavigate();
   const [value, setValue] = React.useState(0);
@@ -24,56 +25,74 @@ const Header = () => {
 
   return (
     <Box sx={{ width: "100%" }}>
-      
-    <Box sx={{
-          background:"white",
-    }}>
-    <Box
+      <Box
         sx={{
-          maxWidth: "1200px",
-          margin: "0 auto",
-          minHeight:"112px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
+          background: "white",
         }}
       >
         <Box
           sx={{
-            flexGrow: "1",
-            flexShrink: "1",
-            flexBasis: "30%",
+            maxWidth: "1200px",
+            margin: "0 auto",
+            minHeight: "112px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
           }}
         >
-          <img src={darklogo}/>
-        </Box>
-        <Box
-          sx={{
-            display: {
-              xs: "none",
-              md: "flex",
-            },
-            flexGrow: "3",
-            flexShrink: "1",
-            flexBasis: "70%",
-          }}
-        >
-          <Box><Box
+          <Box
             sx={{
-              display: "flex",
-              gap: ".625rem",
+              flexGrow: "1",
+              flexShrink: "1",
+              flexBasis: "25%",
             }}
           >
-            {darkSocialMediaHandles.map((x, i) => (
-            
-              <SocialIcon bgColor={"#F8F7F0"} key={i} src={x.src} alt={x.alt}/>
-            ))}
-          </Box></Box>
-          <Box>3</Box>
-          <Box>4</Box>
+            <img src={darklogo} />
+          </Box>
+          <Box
+            sx={{
+              display: {
+                xs: "none",
+                md: "flex",
+              },
+              flexGrow: "3",
+              flexShrink: "1",
+              flexBasis: "75%",
+            }}
+          >
+            <Box>
+              <Box
+                sx={{
+                  display: "flex",
+                  gap: ".625rem",
+                }}
+              >
+                {darkSocialMediaHandles.map((x, i) => (
+                  <SocialIcon
+                    bgColor={"#F8F7F0"}
+                    key={i}
+                    src={x.src}
+                    alt={x.alt}
+                    link={x.link}
+                  />
+                ))}
+              </Box>
+            </Box>
+            <Box className="headerContactComponent" sx={{display:"flex",  alignItems:"center"}}>
+              {contactHeaderData.map((x, i) => (
+                <Box className="headerContactComponentItem" sx={{padding:"0px 20px 0 30px"}} key={i}>
+                  <ContactComponent
+                    src={x.src}
+                    alt={x.alt}
+                    title={x.title}
+                    subTitle={x.subTitle}
+                  />
+                </Box>
+              ))}
+            </Box>
+          </Box>
         </Box>
       </Box>
-    </Box>
       <Box
         sx={{
           maxWidth: "1200px",

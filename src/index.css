@@ -96,3 +96,7 @@
 .inputBox fieldset{
 display: none;
 }
+
+.headerContactComponent .headerContactComponentItem:not(:last-child){
+  border-right:1px solid #E4E2D7 !important;
+}

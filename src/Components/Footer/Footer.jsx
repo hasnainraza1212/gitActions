@@ -50,7 +50,7 @@ const Footer = () => {
           >
             {socialMediaHandles.map((x, i) => (
             
-              <SocialIcon key={i} src={x.src} alt={x.alt}/>
+              <SocialIcon key={i} src={x.src} alt={x.alt} link={x.link}/>
             ))}
           </Box>
         </Box>
