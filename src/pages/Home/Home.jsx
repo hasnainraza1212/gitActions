@@ -150,7 +150,8 @@ const Home = () => {
           sx={{
             display: "flex",
             flexDirection:{
-                xs:"column"
+                xs:"column",
+                md:"row"
             },
             alignItems: {
               lg:"center",
