@@ -1,5 +1,5 @@
-import React from "react";
-import { pages } from "../../utils/utils";
+import React, { memo } from "react";
+import { pages } from "../../utils/utils.jsx";
 import FooterPageItem from "../FooterPageItem/FooterPageItem";
 const FooterPageList = () => {
   return (
@@ -13,4 +13,4 @@ const FooterPageList = () => {
   );
 };
 
-export default FooterPageList;
+export default memo(FooterPageList);

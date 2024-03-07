@@ -1,5 +1,5 @@
 import { Box, Typography } from '@mui/material';
-import React from 'react';
+import React, { memo } from 'react';
 
 const FooterContact = ({
     src, text
@@ -30,4 +30,4 @@ const FooterContact = ({
   )
 }
 
-export default FooterContact;
+export default memo(FooterContact);

@@ -1,5 +1,5 @@
 import { Box, Typography } from '@mui/material'
-import React from 'react'
+import React, { memo } from 'react'
 import leaf from "./../../assets/images/leaf.png"
 const FooterPageItem = ({
     pageName
@@ -20,4 +20,4 @@ const FooterPageItem = ({
   )
 }
 
-export default FooterPageItem
+export default memo(FooterPageItem)

@@ -1,11 +1,12 @@
 import { Box, Container, Typography } from "@mui/material";
-import React from "react";
+import React, { memo } from "react";
 import logo from "./../../assets/images/logo.png";
 import FooterHeading from "./../FooterHeading/FooterHeading.jsx";
-import { contactData, newsData, socialMediaHandles } from "../../utils/utils";
+import { contactData, newsData, socialMediaHandles } from "../../utils/utils.jsx";
 import FooterPageList from "../FooterPageList/FooterPageList.jsx";
 import FooterNews from "../FooterNews/FooterNews.jsx";
 import FooterContact from "../FooterContact/FooterContact.jsx";
+import SocialIcon from "../SocialIcon/SocialIcon.jsx";
 const Footer = () => {
   return (
     <Box sx={{ bgcolor: "#24231D", color: "white" }}>
@@ -22,7 +23,7 @@ const Footer = () => {
           color: "secondary",
           padding: {
             xs: "2rem",
-            md: "7.5rem 0rem 7.5rem 3.5rem",
+            lg: "7.5rem 0rem 7.5rem 3.5rem",
           },
           boxSizing: "border-box",
         }}
@@ -48,28 +49,12 @@ const Footer = () => {
             }}
           >
             {socialMediaHandles.map((x, i) => (
-              <Box
-                key={i}
-                sx={{
-                  width: "2.5rem",
-                  height: "2.5rem",
-                  borderRadius: "50%",
-                  background: "#1F1E17",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
-                <img
-                  style={{ width: ".87rem", height: ".87rem" }}
-                  src={x.src}
-                  alt={x.alt}
-                />
-              </Box>
+            
+              <SocialIcon key={i} src={x.src} alt={x.alt}/>
             ))}
           </Box>
         </Box>
-        <Box sx={{ minWidth: { xs: "", md: "12.5rem" } }}>
+        <Box sx={{ minWidth: { xs: "", md:"10rem", lg: "12.5rem" } }}>
           <FooterHeading text={"Explore"} />
           <FooterPageList />
         </Box>
@@ -77,10 +62,10 @@ const Footer = () => {
           <FooterHeading text={"News"} />
           <Box
             sx={{
-              padding: {xs:0, md:"0 5.54rem 0 6.25rem"},
+              padding: {xs:0, md:"0 2.54rem 0 2.25rem" ,lg:"0 5.54rem 0 6.25rem"},
               minWidth: {
                 xs: 0,
-                md: "12.25rem",
+                lg: "12.25rem",
               },
             }}
           >
@@ -111,4 +96,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default memo(Footer);

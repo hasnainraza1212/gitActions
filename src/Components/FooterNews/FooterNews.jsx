@@ -1,4 +1,5 @@
 import { Box, Typography } from "@mui/material";
+import { memo } from "react";
 
 
 const FooterNews = ({ date, news }) => {
@@ -18,4 +19,4 @@ const FooterNews = ({ date, news }) => {
   );
 };
 
-export default FooterNews;
+export default memo(FooterNews);

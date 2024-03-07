@@ -16,8 +16,13 @@
   margin: 0;
 }
 
-.header {
-  flex: 0 0 auto; /* Header will not grow or shrink */
+.header{
+  /* flex: 0 0 auto;  */
+  background:url("./assets/images/curvyBackground.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 79px;
 }
 
 .outlet {
@@ -81,4 +86,13 @@
   font-family: "Covered By Your Grace", cursive !important;
   font-weight: 800 !important;
   font-style: normal;
+}
+
+
+.headerTab .MuiTabs-indicator{
+  display: none;
+}
+
+.inputBox fieldset{
+display: none;
 }

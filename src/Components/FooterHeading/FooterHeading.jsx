@@ -1,5 +1,5 @@
 import { Box } from '@mui/material'
-import React from 'react'
+import React, { memo } from 'react'
 
 const FooterHeading = ({text}) => {
   return (
@@ -42,4 +42,4 @@ const FooterHeading = ({text}) => {
   )
 }
 
-export default FooterHeading
+export default memo(FooterHeading)
