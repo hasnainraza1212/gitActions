@@ -100,3 +100,6 @@ display: none;
 .headerContactComponent .headerContactComponentItem:not(:last-child){
   border-right:1px solid #E4E2D7 !important;
 }
+.MuiCardContent-root.cardContent:last-child{
+  padding: 0px;
+}

@@ -14,6 +14,14 @@ import search from "./../assets/images/search.png";
 import greenPhone from "./../assets/images/greenPhone.png";
 import mail from "./../assets/images/mail.png";
 import greenMarker from "./../assets/images/greenMarker.png";
+import featureCardMan from "./../assets/images/featureCardMan.png";
+import featureSmartDevices from "./../assets/images/featureSmartDevices.png";
+import featureCardWoman from "./../assets/images/featureCardWoman.png";
+import goldenVeggies from "./../assets/images/goldenVeggies.png";
+import goldenApparatus from "./../assets/images/goldenApparatus.png";
+import goldenCheck from "./../assets/images/goldenCheck.png";
+
+
 export const socialMediaHandles = [
   {
     src: twitter,
@@ -141,3 +149,50 @@ export const contactHeaderData = [
     subTitle:"380 St Kilda Road",
   },
 ];
+
+export const featureCardData = [
+  {
+    title:"Feature 01",
+    heading:"We're using anew technology",
+    src:featureCardMan
+  },
+  {
+    title:"Feature 02",
+    heading:"Good in smart organic services",
+    src:featureSmartDevices
+  },
+  {
+    title:"Feature 03",
+    heading:"Reforming in the systems",
+    src:featureCardWoman
+  }
+]
+export const featuresIconHadings = [
+  {
+    heading:"Growing fruits vegetables",
+    src:goldenVeggies
+  },
+  {
+    heading:"Tips for ripening your fruits",
+    src:goldenApparatus
+  }
+]
+
+export const featureCheckList = [
+  {
+    text:"Watering System Functional: Ready for Crop Irrigation.",
+    src:goldenCheck
+  },
+  {
+    text:"Watering System Checked: Operational for Plant Hydration.",
+    src:goldenCheck
+  }
+]
+// good functions
+
+export const pxToRem = (px) => {
+  const baseFontSize = parseFloat(
+    getComputedStyle(document.documentElement).fontSize
+  );
+  return `${(px / baseFontSize).toFixed(2)}rem`;
+};
