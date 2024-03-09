@@ -371,7 +371,7 @@ const Home = () => {
         }}>
           {
             products.map((x,i)=><Box key={i} sx={{maxWidth:"370px"}}>
-            <Product name={x.name} price={x.price} src={x.src}/>
+            <Product name={x.name} price={x.price} src={x.src} rating={x.rating}/>
             </Box>)
           }
         </Box>

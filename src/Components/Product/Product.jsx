@@ -1,6 +1,6 @@
 import { Box, Typography } from '@mui/material'
-import ReactRating from '../Rating/Rating'
-const Product = ({name="", price="",  src=""}) => {
+import Rating from '../Rating/Rating'
+const Product = ({name="", price="",  src="", rating=3}) => {
   return (
     <Box sx={{
         borderRadius:"10px",
@@ -30,7 +30,7 @@ const Product = ({name="", price="",  src=""}) => {
 {
   price
 }        </Typography>
-          <ReactRating/>
+          <Rating initialRating={rating} fractions={2}  isStatic={true}/>
       </Box>
   )
 }

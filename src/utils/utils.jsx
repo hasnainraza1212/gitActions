@@ -199,26 +199,37 @@ export const products = [
   {src:onion,
     name:"Onion",
     price:"$ 20.00",  
+    rating:3
+
   },
   {src:carrot,
     name:"Carrot",
     price:"$ 50.00",  
+    rating:5
+
   },
   {src:tomato,
     name:"Tomato",
     price:"$ 50.00",  
+    rating:3
+
   },
   {src:redGrapes,
     name:"Red Grapes",
     price:"$ 100.00",  
+    rating:5
+
   },
   {src:garlic,
     name:"Garlic",
     price:"$ 20.00",  
+    rating:4
+
   },
   {src:lettuce,
     name:"Lettuce",
-    price:"$ 30.00",  
+    price:"$ 30.00",
+    rating:3
   }
 ]
 

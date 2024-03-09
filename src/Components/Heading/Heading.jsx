@@ -19,7 +19,10 @@ const Heading = ({subHeading="", heading=""}) => {
         sx={{
           color: "primary.main",
           lineHeight: "57px",
-          fontSize: "48px",
+          fontSize: {
+            md:"48px",
+            xs:"40px"
+          },
         }}
       >
         {heading}
