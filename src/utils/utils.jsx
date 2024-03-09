@@ -20,6 +20,13 @@ import featureCardWoman from "./../assets/images/featureCardWoman.png";
 import goldenVeggies from "./../assets/images/goldenVeggies.png";
 import goldenApparatus from "./../assets/images/goldenApparatus.png";
 import goldenCheck from "./../assets/images/goldenCheck.png";
+import onion from "./../assets/images/onion.png";
+import carrot from "./../assets/images/carrot.png";
+import tomato from "./../assets/images/tomato.png";
+import redGrapes from "./../assets/images/redGrapes.png";
+import garlic from "./../assets/images/garlic.png";
+import lettuce from "./../assets/images/lettuce.png";
+
 
 
 export const socialMediaHandles = [
@@ -188,6 +195,33 @@ export const featureCheckList = [
     src:goldenCheck
   }
 ]
+export const products = [
+  {src:onion,
+    name:"Onion",
+    price:"$ 20.00",  
+  },
+  {src:carrot,
+    name:"Carrot",
+    price:"$ 50.00",  
+  },
+  {src:tomato,
+    name:"Tomato",
+    price:"$ 50.00",  
+  },
+  {src:redGrapes,
+    name:"Red Grapes",
+    price:"$ 100.00",  
+  },
+  {src:garlic,
+    name:"Garlic",
+    price:"$ 20.00",  
+  },
+  {src:lettuce,
+    name:"Lettuce",
+    price:"$ 30.00",  
+  }
+]
+
 // good functions
 
 export const pxToRem = (px) => {

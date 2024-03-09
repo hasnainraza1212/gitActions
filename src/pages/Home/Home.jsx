@@ -1,15 +1,18 @@
 import React from "react";
 import hero from "./../../assets/images/hero.png";
+import onion from "./../../assets/images/onion.png";
 import featureManAndFlower from "./../../assets/images/featureManAndFlower.png";
 import featureTrackter from "./../../assets/images/featureTrackter.png";
 import { Box, Typography } from "@mui/material";
 import Button from "../../Components/Button/Button";
 import goldLeaf from "./../../assets/images/goldLeaf.png";
 import FeatureCard from "../../Components/FeatureCard/FeatureCard";
-import { featureCardData, featureCheckList, featuresIconHadings } from "../../utils/utils";
+import { featureCardData, featureCheckList, featuresIconHadings, products } from "../../utils/utils";
 import TeaserBox from "../../Components/TeaserBox/TeaserBox";
 import IconicHeading from "../../Components/IconicHeading/IconicHeading";
 import ChecklistItem from "../../Components/ChecklistItem/ChecklistItem";
+import Heading from "../../Components/Heading/Heading";
+import Product from "../../Components/Product/Product";
 const Home = () => {
   return (
     <Box>
@@ -238,11 +241,9 @@ const Home = () => {
         >
           <Box
             sx={{
-              display:"flex",
               alignItems:"center",
               justifyContent:"center",
               position:"relative",
-
               flexBasis: {
                 md: "50%",
               },
@@ -255,7 +256,6 @@ const Home = () => {
             <Box sx={{
               width:"500px",
               height:"500px",
-              background:"red",
               borderRadius:"50%",
               background: `url(${featureTrackter})`,
           backgroundPosition: "center",
@@ -335,6 +335,48 @@ const Home = () => {
 
           </Box>
         </Box>
+      </Box>
+      {/* offering section */}
+      <Box sx={{
+        position:"relative"
+      }}>
+        <Box sx={{
+            maxWidth: "1200px",
+            boxSizing: "border-box",
+            padding: {
+              lg: "106px 0px",
+              xs: "50px 0px",
+            },
+            margin: "auto",
+          }}>
+            <Box sx={{
+              textAlign:"center"
+            }}>
+            <Heading subHeading="Recently Added" heading="Latest Products"/>
+            </Box>
+            <Box sx={{
+          width:"100%",
+          mt:{
+            md:"90px",
+            xs:"50px"
+          },
+          boxSizing:"border-box",
+          display:"flex",
+          flexDirection:{
+            md:"row",
+            xs:"column",
+            flexWrap:"wrap",
+            gap:"30px"
+          }
+        }}>
+          {
+            products.map((x,i)=><Box key={i} sx={{maxWidth:"370px"}}>
+            <Product name={x.name} price={x.price} src={x.src}/>
+            </Box>)
+          }
+        </Box>
+        </Box>
+       
       </Box>
     </Box>
   );
