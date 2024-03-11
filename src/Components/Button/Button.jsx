@@ -1,5 +1,6 @@
 import React, { memo } from "react";
 import { Button as MUIButton } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const Button = ({
   text = "click me",
@@ -7,24 +8,26 @@ const Button = ({
   BgColor = "red",
   hoverBgColor = "#c92525",
   hoverTextColor = "white",
+  link="/"
 }) => {
+  const navigate = useNavigate();
+  const handleNavigate = ()=> navigate(link)
   return (
     <MUIButton
-    className="manRope700"
+      onClick={handleNavigate}
+      className="manRope800"
       sx={{
-        borderRadius: "0.62rem", 
-        minHeight:{
-          lg:"3.5rem"
-        },
-        minWidth:{
-          lg:"12.25rem"
+        borderRadius: "0.62rem",
+        minHeight: {
+          lg: "3.5rem",
         },
         backgroundColor: BgColor,
-        fontSize:{
-          lg:"0.87rem",
-          xs:".6rem"
+        fontSize: {
+          lg: "0.87rem",
+          xs: ".6rem",
         },
-        lineHeight:"1.87rem",
+        lineHeight: "1.87rem",
+        padding: "10px 30px",
         color: textColor,
         "&:hover": { backgroundColor: hoverBgColor, color: hoverTextColor },
       }}

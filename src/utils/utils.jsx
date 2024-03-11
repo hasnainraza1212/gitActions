@@ -26,6 +26,16 @@ import tomato from "./../assets/images/tomato.png";
 import redGrapes from "./../assets/images/redGrapes.png";
 import garlic from "./../assets/images/garlic.png";
 import lettuce from "./../assets/images/lettuce.png";
+import orangeVeggiesCard from "./../assets/images/orangeVeggiesCard.png";
+import greenVeggiesCard from "./../assets/images/greenVeggiesCard.png";
+import wheat from "./../assets/images/wheat.png";
+import freshVeggies from "./../assets/images/freshVeggies.png";
+import honey from "./../assets/images/honey.png";
+import honeyIcon from "./../assets/images/honeyIcon.png";
+import wheatIcon from "./../assets/images/wheatIcon.png";
+import veggiesIcon from "./../assets/images/veggiesIcon.png";
+
+
 
 
 
@@ -159,19 +169,22 @@ export const contactHeaderData = [
 
 export const featureCardData = [
   {
-    title:"Feature 01",
-    heading:"We're using anew technology",
-    src:featureCardMan
+    title:"Agriculture",
+    heading:"Products",
+    src:wheat,
+    iconSrc:wheatIcon
   },
   {
-    title:"Feature 02",
-    heading:"Good in smart organic services",
-    src:featureSmartDevices
+    title:"Fresh",
+    heading:"Vegetable",
+    src:freshVeggies,
+    iconSrc:veggiesIcon
   },
   {
-    title:"Feature 03",
-    heading:"Reforming in the systems",
-    src:featureCardWoman
+    title:"Organic",
+    heading:"Products",
+    src:honey,
+    iconSrc:honeyIcon
   }
 ]
 export const featuresIconHadings = [
@@ -233,6 +246,19 @@ export const products = [
   }
 ]
 
+
+export const healthyCards = [
+  {
+    src:orangeVeggiesCard,
+    title:"100% ORGANIC",
+    heading:"Quality Organic Food Store"
+  },
+  {
+    src:greenVeggiesCard,
+    title:"100% ORGANIC",
+    heading:"Healthy Products Everyday"
+  }
+]
 // good functions
 
 export const pxToRem = (px) => {

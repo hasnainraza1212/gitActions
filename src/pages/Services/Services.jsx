@@ -1,9 +1,11 @@
 
 import React from 'react'
+import BreadCrum from '../../Components/BreadCrum/BreadCrum'
 
 const Services = () => {
   return (
-    <div>Services</div>
+    <BreadCrum/>
+
   )
 }
 

@@ -1,8 +1,10 @@
 import React from 'react'
+import BreadCrum from '../../Components/BreadCrum/BreadCrum'
 
 const News = () => {
   return (
-    <div>News</div>
+    <BreadCrum/>
+
   )
 }
 

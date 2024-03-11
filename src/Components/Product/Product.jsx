@@ -7,7 +7,7 @@ const Product = ({name="", price="",  src="", rating=3}) => {
         textAlign:"center",
 
       }}>
-        <img style={{ aspectRatio:"1/1", borderRadius:"10px" }} alt={name} src={src}/>
+        <img style={{width:"100%", aspectRatio:"1/1", borderRadius:"10px" }} alt={name} src={src}/>
         <Typography 
         className="manRope800"
         sx={{

@@ -1,18 +1,25 @@
 import React from "react";
 import hero from "./../../assets/images/hero.png";
-import onion from "./../../assets/images/onion.png";
+import v from "./../../assets/images/v.png";
 import featureManAndFlower from "./../../assets/images/featureManAndFlower.png";
 import featureTrackter from "./../../assets/images/featureTrackter.png";
 import { Box, Typography } from "@mui/material";
 import Button from "../../Components/Button/Button";
 import goldLeaf from "./../../assets/images/goldLeaf.png";
 import FeatureCard from "../../Components/FeatureCard/FeatureCard";
-import { featureCardData, featureCheckList, featuresIconHadings, products } from "../../utils/utils";
+import {
+  featureCardData,
+  featureCheckList,
+  featuresIconHadings,
+  healthyCards,
+  products,
+} from "../../utils/utils";
 import TeaserBox from "../../Components/TeaserBox/TeaserBox";
 import IconicHeading from "../../Components/IconicHeading/IconicHeading";
 import ChecklistItem from "../../Components/ChecklistItem/ChecklistItem";
 import Heading from "../../Components/Heading/Heading";
 import Product from "../../Components/Product/Product";
+import VeggiesCard from "../../Components/VeggiesCard/VeggiesCard";
 const Home = () => {
   return (
     <Box>
@@ -161,6 +168,10 @@ const Home = () => {
           <Box
             sx={{
               display: "flex",
+              mb:{
+                lg:"0px",
+                md:"100px"
+              },
               flexDirection: {
                 xs: "column",
                 md: "row",
@@ -178,6 +189,7 @@ const Home = () => {
               BgColor={"#4BAF47"}
               hoverBgColor={"#47d742"}
               textColor="white"
+              link={"/about"}
             >
               Discover More
             </Button>
@@ -215,13 +227,16 @@ const Home = () => {
               key={i}
               sx={{
                 flexBasis: {
-                  lg: "370px",
-                  md: "370px",
+                  lg: "390px",
+                  md: "270px",
                   xs: "100%",
+                  flexGrow:"1",
+                  flexShrink:"1"
                 },
+                borderRadius:"10px"
               }}
             >
-              <FeatureCard src={x.src} heading={x.heading} title={x.title} />
+              <FeatureCard src={x.src} heading={x.heading} title={x.title} iconSrc={x.iconSrc} />
             </Box>
           ))}
         </Box>
@@ -241,9 +256,9 @@ const Home = () => {
         >
           <Box
             sx={{
-              alignItems:"center",
-              justifyContent:"center",
-              position:"relative",
+              alignItems: "center",
+              justifyContent: "center",
+              position: "relative",
               flexBasis: {
                 md: "50%",
               },
@@ -253,31 +268,32 @@ const Home = () => {
               },
             }}
           >
-            <Box sx={{
-              width:"500px",
-              height:"500px",
-              borderRadius:"50%",
-              background: `url(${featureTrackter})`,
-          backgroundPosition: "center",
-          backgroundSize: "cover",
-          backgroundRepeat: "no-repeat",
-            }}>
-
-            <Box sx={{
-                position:"absolute",
-                bottom:"50px",
-                left:"-30px",
-                border:"8px solid white",
-                width:"200px",
-                height:"200px",
-                borderRadius:"50%",
-                background: `url(${featureManAndFlower})`,
-          backgroundPosition: "center",
-          backgroundSize: "cover",
-          backgroundRepeat: "no-repeat",
-            }}>
-
-            </Box>
+            <Box
+              sx={{
+                width: "500px",
+                height: "500px",
+                borderRadius: "50%",
+                background: `url(${featureTrackter})`,
+                backgroundPosition: "center",
+                backgroundSize: "cover",
+                backgroundRepeat: "no-repeat",
+              }}
+            >
+              <Box
+                sx={{
+                  position: "absolute",
+                  bottom: "50px",
+                  left: "-30px",
+                  border: "8px solid white",
+                  width: "200px",
+                  height: "200px",
+                  borderRadius: "50%",
+                  background: `url(${featureManAndFlower})`,
+                  backgroundPosition: "center",
+                  backgroundSize: "cover",
+                  backgroundRepeat: "no-repeat",
+                }}
+              ></Box>
             </Box>
           </Box>
           <Box
@@ -315,32 +331,35 @@ const Home = () => {
               ))}
             </Box>
             {featureCheckList.map((x, i) => (
-                <ChecklistItem text={x.text} src={x.src} key={i} />
-              ))}
-              <Box sx={{
-                mt:{
-                  md:"40px",
-                  xs:"30px"
-                }
-              }}>
-              <Button
-              text={"Discover More"}
-              BgColor={"#4BAF47"}
-              hoverBgColor={"#47d742"}
-              textColor="white"
+              <ChecklistItem text={x.text} src={x.src} key={i} />
+            ))}
+            <Box
+              sx={{
+                mt: {
+                  md: "40px",
+                  xs: "30px",
+                },
+              }}
             >
-              Discover More
-            </Button>
-              </Box>
-
+              <Button
+                text={"Discover More"}
+                BgColor={"#4BAF47"}
+                hoverBgColor={"#47d742"}
+                textColor="white"
+                link={"/projects"}
+              >
+                Discover More
+              </Button>
+            </Box>
           </Box>
         </Box>
       </Box>
+
       {/* offering section */}
-      <Box sx={{
-        position:"relative"
-      }}>
-        <Box sx={{
+      <Box>
+        {/* products */}
+        <Box
+          sx={{
             maxWidth: "1200px",
             boxSizing: "border-box",
             padding: {
@@ -348,35 +367,132 @@ const Home = () => {
               xs: "50px 0px",
             },
             margin: "auto",
-          }}>
-            <Box sx={{
-              textAlign:"center"
-            }}>
-            <Heading subHeading="Recently Added" heading="Latest Products"/>
+          }}
+        >
+          <Box
+            sx={{
+              textAlign: "center",
+            }}
+          >
+            <Heading subHeading="Recently Added" heading="Latest Products" />
+          </Box>
+          <Box
+            sx={{
+              width: "100%",
+              mt: {
+                md: "90px",
+                xs: "50px",
+              },
+              boxSizing: "border-box",
+              display: "flex",
+              flexDirection: {
+                md: "row",
+                xs: "column",
+                flexWrap: "wrap",
+                gap: "30px",
+              },
+            }}
+          >
+            {products.map((x, i) => (
+              <Box key={i} sx={{ maxWidth: {
+                sm:"370px",
+                xs:"250px"
+              }, m: "0 auto",
+              }}>
+                <Product
+                  name={x.name}
+                  price={x.price}
+                  src={x.src}
+                  rating={x.rating}
+                />
+              </Box>
+            ))}
+          </Box>
+        </Box>
+        {/* Healthy card */}
+        <Box
+          sx={{
+            maxWidth: "1200px",
+            boxSizing: "border-box",
+            display: "flex",
+            justifyContent: {
+              md:"space-around",
+              lg:"space-between"
+            },
+            alignItems:"center",
+            gap: {
+              md: "60px",
+              xs: "30px",
+            },
+            flexDirection: {
+              md: "row",
+              xs: "column",
+            },
+            margin: "auto",
+            position: "relative",
+            marginBottom: {
+              md: "-60px",
+              xs: "50px",
+            },
+          }}
+        >
+          {healthyCards.map((x, i) => (
+            <VeggiesCard
+              src={x.src}
+              title={x.title}
+              heading={x.heading}
+              key={i}
+            />
+          ))}
+        </Box>
+      </Box>
+
+      {/*  */}
+      <Box
+        sx={{
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+          background: `url(${v})`,
+          padding:{
+            md:"140px",
+            xs:"30px"
+          }
+        }}
+      >
+        <Typography
+          className="manRope800"
+          sx={{
+            maxWidth: "850px",
+            margin: "auto",
+            lineHeight: {
+              xs:"30px",
+              md:"74px"
+            },
+            fontSize: {
+              md:"60px",
+              xs:"20px"
+            },
+            color: "white",
+            textAlign: "center"
+          }}
+        >
+          Be Healthy & Eat Only Fresh Organic Vagetables
+        </Typography>
+        <Box sx={{textAlign:"center", mt:{
+          md:"45px",
+          xs:"20px"
+        }}}>
+        <Button
+              text={"Shop Now"}
+              BgColor={"#4BAF47"}
+              hoverBgColor={"#47d742"}
+              textColor="white"
+              link={"/shop"}
+            >
+            </Button>
             </Box>
-            <Box sx={{
-          width:"100%",
-          mt:{
-            md:"90px",
-            xs:"50px"
-          },
-          boxSizing:"border-box",
-          display:"flex",
-          flexDirection:{
-            md:"row",
-            xs:"column",
-            flexWrap:"wrap",
-            gap:"30px"
-          }
-        }}>
-          {
-            products.map((x,i)=><Box key={i} sx={{maxWidth:"370px"}}>
-            <Product name={x.name} price={x.price} src={x.src} rating={x.rating}/>
-            </Box>)
-          }
-        </Box>
-        </Box>
-       
+
       </Box>
     </Box>
   );

@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Box, FormControl, OutlinedInput, Tab, Tabs } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import HeaderIcon from "../HeaderIcon/HeaderIcon";
 import {
   contactHeaderData,
@@ -14,14 +14,20 @@ import SocialIcon from "../SocialIcon/SocialIcon.jsx";
 import ContactComponent from "../ContactComponent/ContactComponent.jsx";
 const Header = () => {
   const navigate = useNavigate();
+  const {pathname} = useLocation()
   const [value, setValue] = React.useState(0);
   const handleChange = (event, newValue) => {
-    console.log(newValue);
     setValue(newValue);
   };
   const handlenavigate = (link) => {
     navigate(link);
   };
+  React.useEffect(()=>{
+ const ind = tabsArray.findIndex(tab=>tab.link===pathname)
+ if(ind !== -1){
+  return setValue(ind)
+ }
+  },[pathname])
 
   return (
     <Box sx={{ width: "100%" }}>
