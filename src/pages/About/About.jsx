@@ -24,7 +24,6 @@ const About = () => {
               xs: "50px 30px",
             },
             margin: "auto",
-
             display: "flex",
             gap: "80px",
             height: "100%",
@@ -49,7 +48,6 @@ const About = () => {
             <Box
               sx={{
                 width: "100%",
-                background: "red",
                 height: {
                   md: "100%",
                   xs: "450px",
