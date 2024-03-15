@@ -14,9 +14,6 @@ import search from "./../assets/images/search.png";
 import greenPhone from "./../assets/images/greenPhone.png";
 import mail from "./../assets/images/mail.png";
 import greenMarker from "./../assets/images/greenMarker.png";
-import featureCardMan from "./../assets/images/featureCardMan.png";
-import featureSmartDevices from "./../assets/images/featureSmartDevices.png";
-import featureCardWoman from "./../assets/images/featureCardWoman.png";
 import goldenVeggies from "./../assets/images/goldenVeggies.png";
 import goldenApparatus from "./../assets/images/goldenApparatus.png";
 import goldenCheck from "./../assets/images/goldenCheck.png";
@@ -34,11 +31,6 @@ import honey from "./../assets/images/honey.png";
 import honeyIcon from "./../assets/images/honeyIcon.png";
 import wheatIcon from "./../assets/images/wheatIcon.png";
 import veggiesIcon from "./../assets/images/veggiesIcon.png";
-
-
-
-
-
 export const socialMediaHandles = [
   {
     src: twitter,
@@ -84,6 +76,24 @@ export const darkSocialMediaHandles = [
     link: "https://www.instagram.com/agrios",
   },
 ];
+export const AboutLinks = [
+  {
+    name: "Agriculture Products",
+    link: "/shop",
+  },
+  {
+    name: "Projects Completed",
+    link: "/projects",
+  },
+  {
+    name: "Satisfied Clients",
+    link: "/services",
+  },
+  {
+    name: "Experts Farmers",
+    link: "/farmers",
+  }];
+
 export const pages = [
   {
     name: "About",
@@ -95,15 +105,15 @@ export const pages = [
   },
   {
     name: "Our Projects",
-    link: "/our-projects",
+    link: "/projects",
   },
   {
     name: "Meet the Farmers",
-    link: "/meet-the-farmers",
+    link: "/farmers",
   },
   {
     name: "Latest News",
-    link: "/latest-news",
+    link: "/news",
   },
   {
     name: "Contact",

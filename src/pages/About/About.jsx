@@ -1,14 +1,17 @@
-import React, { useState, useRef } from "react";
 import BreadCrum from "../../Components/BreadCrum/BreadCrum";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import TeaserBox from "../../Components/TeaserBox/TeaserBox";
 import Button from "../../Components/Button/Button";
-import { featureCheckList } from "../../utils/utils";
+import { AboutLinks, featureCheckList } from "../../utils/utils";
 import ChecklistItem from "../../Components/ChecklistItem/ChecklistItem";
 import traktor from "./../../assets/images/traktor.jpg";
 import playIcon from "./../../assets/images/playIcon.png";
 import farmVideo1 from "./../../assets/videos/farmVideo1.mp4";
 import VideoBox from "../../Components/VideoBox/VideoBox";
+import PageItem from "../../Components/PageItem/PageItem";
+import AboutTestimonialBg from "./../../assets/images/AboutTestimonialBg.png";
+import testimonial1 from "./../../assets/images/testimonial1.png";
+import Testimonial from "../../Components/Testimonial/Testimonial";
 
 const About = () => {
   return (
@@ -114,7 +117,65 @@ const About = () => {
         </Box>
       </Box>
 
-      <VideoBox title="ECO-Friendly Products can be Made from Scratch" icon={playIcon} videoUri={farmVideo1}/>
+      <VideoBox
+        title="ECO-Friendly Products can be Made from Scratch"
+        icon={playIcon}
+        videoUri={farmVideo1}
+      />
+      <Box
+        sx={{
+          height: {
+            md: "184px",
+          },
+          background: "#1F1E17",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <Box
+          sx={{
+            flexBasis: "1200px",
+            flexShrink: "1",
+            boxSizing: "border-box",
+            padding: "0 150px",
+            display: {
+              md: "flex",
+              xs: "none",
+            },
+            justifyContent: "space-around",
+          }}
+        >
+          {AboutLinks.map((x, i) => (
+            <PageItem
+              showleaf={false}
+              key={i}
+              pageName={x.name}
+              link={x.link}
+            />
+          ))}
+        </Box>
+      </Box>
+
+      {/* testimonials */}
+      <Box
+        sx={{
+          boxSizing: "border-box",
+          padding: "120px 0",
+          background: `url(${AboutTestimonialBg})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          display: "flex",
+          gap:{
+            lg:"100px"
+          },
+          justifyContent: "center",
+        }}
+      >
+        <Testimonial/>
+        {/* <Testimonial/> */}
+
+      </Box>
     </>
   );
 };
