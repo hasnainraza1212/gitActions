@@ -32,6 +32,14 @@ import honeyIcon from "./../assets/images/honeyIcon.png";
 import wheatIcon from "./../assets/images/wheatIcon.png";
 import veggiesIcon from "./../assets/images/veggiesIcon.png";
 import apples from "./../assets/images/apples.png"
+import projectsCow from "./../assets/images/projectsCow.png"
+import projectsStrawberry from "./../assets/images/projectsStrawberry.png"
+import projectsFarmer1 from "./../assets/images/projectsFarmer1.png"
+import projectsFarmer2 from "./../assets/images/projectsFarmer2.png"
+import projectsEasyHarvesting from "./../assets/images/projectsEasyHarvesting.png"
+import projectsHealthyFood from "./../assets/images/projectsHealthyFood.png"
+
+
 export const socialMediaHandles = [
   {
     src: twitter,
@@ -354,6 +362,39 @@ export const projectCard=[
     title:"Location:",
     desc:"Broklyn, New Your",
   }
+]
+
+export const ProjectsCarousel=[
+  {
+    title:"Agriculture ",
+    desc:"Farming",
+    src:projectsCow
+  },
+  {
+    title:"Ecological",
+    desc:"Farming",
+    src:projectsStrawberry
+  },
+  {
+    title:"Organic",
+    desc:"Solutions",
+    src:projectsFarmer1
+  },
+  {
+    title:"Fresh",
+    desc:"Products",
+    src:projectsFarmer2
+  },
+  {
+    title:"Healthy",
+    desc:"Food",
+    src:projectsHealthyFood
+  },
+  {
+    title:"Easy",
+    desc:"Harvesting",
+    src:projectsEasyHarvesting
+  },
 ]
 // good functions
 

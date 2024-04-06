@@ -5,6 +5,7 @@ import ProjectCardItem from "../../Components/ProjectCardItem/ProjectCardItem";
 import { darkSocialMediaHandles, projectCard } from "../../utils/utils";
 import Heading from "../../Components/Heading/Heading";
 import SocialIcon from "./../../Components/SocialIcon/SocialIcon";
+import ProjectCarousel from "../../Components/Carousel/ProjectCarousel";
 
 const Projects = () => {
   return (
@@ -268,18 +269,17 @@ const Projects = () => {
           </Box>
         </Box>
       </Box>
-      <Box sx={{ textAlign: "center" }}>
+      <Box sx={{ textAlign: "center" , p:{lg:"110px 0 50px 0", xs:"60px 0"}}}>
         <Heading
           subHeading={"Recently Completed"}
           heading={"Similar Projects"}
         />
-        <Box
-          sx={{
-            maxWidth: "",
-          }}
-        >
-          <img />
-        </Box>
+      </Box>
+      <Box sx={{
+        maxWidth:"1400px", 
+        m:"auto"
+      }}>
+       <ProjectCarousel loop={true} mousewheel={true}/>
       </Box>
     </Box>
   );
