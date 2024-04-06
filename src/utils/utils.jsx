@@ -31,6 +31,7 @@ import honey from "./../assets/images/honey.png";
 import honeyIcon from "./../assets/images/honeyIcon.png";
 import wheatIcon from "./../assets/images/wheatIcon.png";
 import veggiesIcon from "./../assets/images/veggiesIcon.png";
+import apples from "./../assets/images/apples.png"
 export const socialMediaHandles = [
   {
     src: twitter,
@@ -269,7 +270,94 @@ export const healthyCards = [
     heading:"Healthy Products Everyday"
   }
 ]
+export const servicesProductCategoriesArray =  [
+  {
+    link:"/",
+    tab:"Agriculture Products"
+  },
+  {
+    link:"/",
+    tab:"Organic Products"
+  },
+  {
+    link:"/",
+    tab:"Fresh Vegetables"
+  },
+  {
+    link:"/",
+    tab:"Dairy Products"
+  },
+  {
+    link:"/",
+    tab:"Harvest"
+  }
+]
+
+export const servicesAgriculturalProductText =[
+  { text: "Agricultural products, the fruits of labor from farms worldwide, are diverse and essential. From staple crops like wheat, rice, and corn to an array of fruits, vegetables, and livestock, they sustain global food systems. These products not only provide sustenance but also serve as raw materials for various industries. Reflecting diverse climates and farming practices, agricultural products play a crucial role in nourishing populations and driving economies across the globe." },
+  { text: "Additionally, agricultural products contribute to cultural identities and traditions, with each region boasting its specialties and culinary delights. These goods, from artisanal cheeses to exotic spices, offer a glimpse into the rich tapestry of global agriculture. As consumers become increasingly conscious of sustainability and food origins, the importance of diverse, locally sourced agricultural products continues to grow, shaping the future of farming and culinary experiences worldwide." }
+];
+
+export const serviceCarousel=[
+  {
+    title:"Honey Production",
+    desc:"Honeybees gather nectar from flowers and convert it into honey, a natural sweetener rich in antioxidants and antibacterial properties.",
+    src:honey
+  },
+  {
+    title:"Farm-Fresh Veggies",
+    desc:"Our fresh veggies are sourced directly from local farms, ensuring maximum freshness and nutritional value for our customers.",
+    src:freshVeggies
+  },
+  {
+    title:"Quality Wheat Products",
+    desc:"We use high-quality wheat grains harvested from trusted farms to provide wholesome and nutritious products to our customers.",
+    src:wheat
+  },
+  {
+    title:"Premium Apple Selection",
+    desc:"Our apples are carefully selected from orchards known for their premium quality and taste, offering a crisp and delightful snacking experience.",
+    src:apples
+  },
+]
+
+
+export const serviceAccordian=[
+  {
+    title:"World’s hottest destinations for vegans",
+    desc:"Honeybees gather nectar from flowers and convert it into honey, a natural sweetener rich in antioxidants and antibacterial properties.",
+  },
+  {
+    title:"Let’s grow naturaly and live naturaly",
+    desc:"Our fresh veggies are sourced directly from local farms, ensuring maximum freshness and nutritional value for our customers.",
+  },
+  {
+    title:"Best vegetables for your healthy hair",
+    desc:"We use high-quality wheat grains harvested from trusted farms to provide wholesome and nutritious products to our customers.",
+  }
+]
+
+export const projectCard=[
+  {
+    title:"Services:",
+    desc:"Healthy Food",
+  },
+  {
+    title:"Farmer:",
+    desc:"Mike Hardson",
+  },
+  {
+    title:"Duration:",
+    desc:"4.5 Months",
+  },
+  {
+    title:"Location:",
+    desc:"Broklyn, New Your",
+  }
+]
 // good functions
+
+
 
 export const pxToRem = (px) => {
   const baseFontSize = parseFloat(

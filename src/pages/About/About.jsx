@@ -1,4 +1,3 @@
-import BreadCrum from "../../Components/BreadCrum/BreadCrum";
 import { Box, Typography } from "@mui/material";
 import TeaserBox from "../../Components/TeaserBox/TeaserBox";
 import Button from "../../Components/Button/Button";
@@ -16,7 +15,6 @@ import Testimonial from "../../Components/Testimonial/Testimonial";
 const About = () => {
   return (
     <>
-      <BreadCrum />
       <Box>
         <Box
           sx={{

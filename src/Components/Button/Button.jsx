@@ -8,23 +8,24 @@ const Button = ({
   BgColor = "red",
   hoverBgColor = "#c92525",
   hoverTextColor = "white",
+  fullWidth=false,
   link="/"
 }) => {
   const navigate = useNavigate();
   const handleNavigate = ()=> navigate(link)
   return (
     <MUIButton
+    fullWidth={fullWidth}
       onClick={handleNavigate}
       className="manRope800"
       sx={{
         borderRadius: "0.62rem",
         minHeight: {
-          lg: "3.5rem",
+          xs: "3.5rem",
         },
         backgroundColor: BgColor,
         fontSize: {
-          lg: "0.87rem",
-          xs: ".6rem",
+          xs: "0.87rem",
         },
         lineHeight: "1.87rem",
         padding: "10px 30px",

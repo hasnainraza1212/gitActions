@@ -12,7 +12,9 @@ import {
 import darklogo from "./../../assets/images/darklogo.png";
 import SocialIcon from "../SocialIcon/SocialIcon.jsx";
 import ContactComponent from "../ContactComponent/ContactComponent.jsx";
+import BreadCrum from "../BreadCrum/BreadCrum.jsx";
 const Header = () => {
+
   const navigate = useNavigate();
   const {pathname} = useLocation()
   const [value, setValue] = React.useState(0);
@@ -28,6 +30,12 @@ const Header = () => {
   return setValue(ind)
  }
   },[pathname])
+
+  const showCrumbs = ()=>{
+    if(location.pathname !== "/"){
+      return <BreadCrum/>
+    }
+  }
 
   return (
     <Box sx={{ width: "100%" }}>
@@ -169,6 +177,8 @@ const Header = () => {
           </Box>
         </Box>
       </Box>
+      {showCrumbs()}
+
     </Box>
   );
 };

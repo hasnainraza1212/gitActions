@@ -1,25 +1,30 @@
 import { Box, Typography } from "@mui/material";
-import { useCallback, useEffect } from "react";
+import { useMemo } from "react";
 import { Link, useLocation } from "react-router-dom";
 import BreadCrumBG from "./../../assets/images/breadCrumBg.png";
+
 const BreadCrum = () => {
   const location = useLocation();
-  const handleBreadCrum = useCallback(() => {
-    const crums = location.pathname
+
+  const crumbs = useMemo(() => {
+    return location.pathname
       .split("/")
-      .filter((x) => x != "")
+      .filter((x) => x !== "")
       .map((x, i) => (
-        <Box key={i} sx={{display:"flex", alignItems:"center",gap:"10px"}}>
-           <Box sx={{color:"white"}}>
-            /
-           </Box>
+        <Box key={i} sx={{ display: "flex", alignItems: "center", gap: "10px" }}>
+          <Box sx={{ color: "white" }}>/</Box>
           <Link className="manRope400" style={{ color: "white", textDecoration: "none" }} to={`/${x}`}>
             {`${x} `}
           </Link>
         </Box>
       ));
-    return crums;
   }, [location.pathname]);
+
+  const currentPage = useMemo(() => {
+    const pages = location.pathname.split("/").filter((x) => x !== "");
+    return pages[0];
+  }, [location.pathname]);
+
   return (
     <Box
       sx={{
@@ -27,6 +32,7 @@ const BreadCrum = () => {
         height: "300px",
         display: "flex",
         alignItems: "center",
+        flexDirection: "column",
         justifyContent: "center",
         background: `url(${BreadCrumBG})`,
         backgroundPosition: "center",
@@ -34,14 +40,23 @@ const BreadCrum = () => {
         backgroundRepeat: "no-repeat",
       }}
     >
-      <Box 
+      <Box sx={{ display: "flex", gap: "10px" }}>
+        <Link className="manRope400" style={{ color: "white", textDecoration: "none" }} to="/">
+          Home
+        </Link>{" "}
+        {crumbs}
+      </Box>
+      <Typography
+        className="manRope800"
         sx={{
-          display:"flex",
-          gap:"10px"
+          mt: "20px",
+          fontSize: { lg: "50px" },
+          lineHeight: { lg: "60px" },
+          color: "white",
         }}
       >
-       <Link className="manRope400" style={{ color: "white", textDecoration: "none" }}  to="/">Home</Link> {handleBreadCrum()}
-      </Box>
+        {currentPage}
+      </Typography>
     </Box>
   );
 };

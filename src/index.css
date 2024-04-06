@@ -103,3 +103,11 @@ display: none;
 .MuiCardContent-root.cardContent:last-child{
   padding: 0px;
 }
+
+.green-scrollbar .swiper-scrollbar {
+  background-color: darkgreen;
+}
+
+.green-scrollbar .swiper-scrollbar-drag {
+  background-color: lightgreen;
+}
