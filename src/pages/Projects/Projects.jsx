@@ -269,6 +269,7 @@ const Projects = () => {
           </Box>
         </Box>
       </Box>
+      {/* sec2 */}
       <Box sx={{ textAlign: "center" , p:{lg:"110px 0 50px 0", xs:"60px 0"}}}>
         <Heading
           subHeading={"Recently Completed"}

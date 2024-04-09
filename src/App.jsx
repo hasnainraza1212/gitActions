@@ -8,12 +8,15 @@ import Projects from "./pages/Projects/Projects"
 import News from "./pages/News/News"
 import Shop from "./pages/Shop/Shop"
 import { useEffect } from "react"
+import DetailedNews from "./pages/DetailedNews/DetailedNews"
 function App() {
   function ScrollToTop() {
     const { pathname } = useLocation();
   
     useEffect(() => {
-      window.scrollTo(0, 0);
+      if(!pathname.includes("news")){
+        window?.scrollTo(0, 0);
+      }
     }, [pathname]);
   
     return null;
@@ -31,6 +34,7 @@ function App() {
       <Route path="farmers" element={<Services />} />
       <Route path="projects" element={<Projects />} />
       <Route path="news" element={<News />} />
+      <Route path="news/:id" element={<DetailedNews />} />
       <Route path="shop" element={<Shop />} />
       <Route path="shop/product/order" element={<Shop />} />
 

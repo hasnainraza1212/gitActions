@@ -9,10 +9,11 @@ const Button = ({
   hoverBgColor = "#c92525",
   hoverTextColor = "white",
   fullWidth=false,
-  link="/"
+  link="/",
+  isNavigate=true
 }) => {
   const navigate = useNavigate();
-  const handleNavigate = ()=> navigate(link)
+  const handleNavigate = ()=> isNavigate && navigate(link)
   return (
     <MUIButton
     fullWidth={fullWidth}
@@ -28,7 +29,7 @@ const Button = ({
           xs: "0.87rem",
         },
         lineHeight: "1.87rem",
-        padding: "10px 30px",
+        padding: {xs:"10px 15px", sm:"10px 24px"},
         color: textColor,
         "&:hover": { backgroundColor: hoverBgColor, color: hoverTextColor },
       }}
