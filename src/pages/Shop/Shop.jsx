@@ -27,7 +27,7 @@ const Shop = () => {
           const {src, ...rest} = item
           return rest
         })
-          window?.localStorage?.setItem("cart", JSON.stringify([...prev,...newItem ]))
+          window?.localStorage?.setItem("cart", JSON.stringify([...cart,...newItem ]))
         dispatch(updateCart(cart, newItem))
         setOpen(true)
   }
