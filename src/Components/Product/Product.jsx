@@ -1,6 +1,11 @@
 import { Box, Typography } from '@mui/material'
 import Rating from '../Rating/Rating'
-const Product = ({name="", price="",  src="", rating=3}) => {
+import Button from '../Button/Button'
+import { memo, useCallback, useEffect } from 'react'
+const Product = ({name="", price="",  src="", cb=()=>{}, id="",rating=3}) => {
+  const addToCart=()=>{
+    cb({name, price, src, rating,id })
+  }
   return (
     <Box sx={{
         borderRadius:"10px",
@@ -31,8 +36,20 @@ const Product = ({name="", price="",  src="", rating=3}) => {
   price
 }        </Typography>
           <Rating initialRating={rating} fractions={2}  isStatic={true}/>
+          <Box sx={{mt:"10px"}}>
+          <Button
+              text={"Add to Cart"}
+              BgColor={"#4BAF47"}
+              hoverBgColor={"#47d742"}
+              textColor="white"
+              isNavigate={false}
+              fullWidth={true}
+              cb={addToCart}
+            >
+            </Button>
+          </Box>
       </Box>
   )
 }
 
-export default Product
+export default memo(Product)

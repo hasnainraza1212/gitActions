@@ -6,7 +6,6 @@ import {
   contactHeaderData,
   darkSocialMediaHandles,
   headerIcons,
-  socialMediaHandles,
   tabsArray,
 } from "../../utils/utils.jsx";
 import darklogo from "./../../assets/images/darklogo.png";
@@ -172,6 +171,7 @@ const Header = () => {
             >
               {headerIcons.map((x, i) => (
                 <HeaderIcon key={i} component={x.icon} />
+                
               ))}
             </Box>
           </Box>

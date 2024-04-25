@@ -7,21 +7,32 @@ import Services from "./pages/Services/Services"
 import Projects from "./pages/Projects/Projects"
 import News from "./pages/News/News"
 import Shop from "./pages/Shop/Shop"
-import { useEffect } from "react"
+import { useEffect, useMemo, useState } from "react"
 import DetailedNews from "./pages/DetailedNews/DetailedNews"
 function App() {
+  const [windowWidth, setWindowWidth] = useState(window?.innerWidth||0)
+  const isLargeScreen =  useMemo(()=>{return windowWidth<1200?false:true},[windowWidth])
   function ScrollToTop() {
     const { pathname } = useLocation();
-  
     useEffect(() => {
+
       if(!pathname.includes("news")){
         window?.scrollTo(0, 0);
+      }
+      else if(pathname.includes("news")&&!isLargeScreen){
+        window?.scrollTo(0, 0);
+
       }
     }, [pathname]);
   
     return null;
   }
-  
+useEffect(()=>{
+  window.addEventListener("resize", ()=>{setWindowWidth(window?.innerWidth||0)})
+  return ()=>{
+  window.removeEventListener("resize", ()=>{setWindowWidth(window?.innerWidth||0)})
+  }
+},[])
   return (
 <BrowserRouter>
 <ScrollToTop />

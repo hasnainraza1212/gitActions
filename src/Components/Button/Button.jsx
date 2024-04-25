@@ -3,6 +3,7 @@ import { Button as MUIButton } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 const Button = ({
+  cb=()=>{},
   text = "click me",
   textColor = "white",
   BgColor = "red",
@@ -17,7 +18,7 @@ const Button = ({
   return (
     <MUIButton
     fullWidth={fullWidth}
-      onClick={handleNavigate}
+      onClick={()=>{return handleNavigate(),cb()} }
       className="manRope800"
       sx={{
         borderRadius: "0.62rem",

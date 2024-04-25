@@ -232,42 +232,50 @@ export const featureCheckList = [
   }
 ]
 export const products = [
-  {src:onion,
-    name:"Onion",
-    price:"$ 20.00",  
-    rating:3
-
+  {
+    id: "b5c62b61-0fd4-4d6a-aed9-8329cfc06d3e",
+    src: onion,
+    name: "Onion",
+    price: "$20.00",
+    rating: 3
   },
-  {src:carrot,
-    name:"Carrot",
-    price:"$ 50.00",  
-    rating:5
-
+  {
+    id: "b7d2c31e-9a4f-4cf4-b244-f8bf75b5d079",
+    src: carrot,
+    name: "Carrot",
+    price: "$50.00",
+    rating: 5
   },
-  {src:tomato,
-    name:"Tomato",
-    price:"$ 50.00",  
-    rating:3
-
+  {
+    id: "c5cb20d4-6db2-4c76-bb53-b2a5d58c7a0f",
+    src: tomato,
+    name: "Tomato",
+    price: "$50.00",
+    rating: 3
   },
-  {src:redGrapes,
-    name:"Red Grapes",
-    price:"$ 100.00",  
-    rating:5
-
+  {
+    id: "a1c441e0-03f1-47ac-96ab-60b067a0144c",
+    src: redGrapes,
+    name: "Red Grapes",
+    price: "$100.00",
+    rating: 5
   },
-  {src:garlic,
-    name:"Garlic",
-    price:"$ 20.00",  
-    rating:4
-
+  {
+    id: "e4f91e94-fa89-4eb4-9b05-695ed9e518b4",
+    src: garlic,
+    name: "Garlic",
+    price: "$20.00",
+    rating: 4
   },
-  {src:lettuce,
-    name:"Lettuce",
-    price:"$ 30.00",
-    rating:3
+  {
+    id: "d65bcdd0-768e-4be6-888f-d7e75727c37d",
+    src: lettuce,
+    name: "Lettuce",
+    price: "$30.00",
+    rating: 3
   }
-]
+];
+
 
 
 export const healthyCards = [
@@ -523,6 +531,28 @@ export const NewsCards=[
     ]
   }
 ]
+export const DetailedNewsFactCard = [
+  {
+    text:"Agronomy and relation to Other Sciences"
+  },
+  {
+    text:"Bringing Food Production Back To Cities"
+  }
+] 
+const localFormData = JSON.parse(window?.localStorage?.getItem("commentFormData"))
+export const newsInputs = [
+  {
+    placeholder:"Full Name",
+    name:"name",
+    defaultValue:localFormData?.name??""
+  },
+  {
+    placeholder:"Email Address",
+    name:"email",
+    defaultValue:localFormData?.email??""
+
+  },
+] 
 
 
 // good functions

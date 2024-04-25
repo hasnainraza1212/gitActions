@@ -111,3 +111,14 @@ display: none;
 .green-scrollbar .swiper-scrollbar-drag {
   background-color: lightgreen;
 }
+ .MuiInputBase-root.MuiOutlinedInput-root.CustomInput fieldset{
+  border: 0 !important;
+}
+.MuiInputBase-root.MuiOutlinedInput-root.CustomInput input
+{
+  padding:0 !important;
+}
+.MuiDialog-root.customMuiDialog .MuiDialog-container.MuiDialog-scrollPaper .MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded{
+  /* background-color: rgb(255, 255, 255); */
+  padding:30px;
+}

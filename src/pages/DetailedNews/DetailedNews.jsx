@@ -1,31 +1,64 @@
-import React, { useMemo } from "react";
-import { NewsCards, servicesProductCategoriesArray } from "../../utils/utils";
-import { useLocation, useNavigate } from "react-router-dom";
+import React, { useEffect, useMemo, useState } from "react";
+import {
+  DetailedNewsFactCard,
+  NewsCards,
+  darkSocialMediaHandles,
+  newsInputs,
+  servicesProductCategoriesArray,
+} from "../../utils/utils";
+import {  useLocation, useNavigate } from "react-router-dom";
 import { Box, Typography } from "@mui/material";
 import NewsCardUserDetails from "../../Components/NewsCardUserDetails/NewsCardUserDetails";
 import Button from "../../Components/Button/Button";
 import user from "./../../assets/images/user.png";
+import SocialIcon from "../../Components/SocialIcon/SocialIcon";
+import Checkbox from "@mui/material/Checkbox";
+import Input from "../../Components/Input/Input";
+import Dialog from "../../Components/Dialog/Dialog";
+import SnackAlert from "../../Components/SnackAlert/SnackAlert";
+const label = { inputProps: { "aria-label": "Checkbox for save details" } };
 const scrollbarStyles = {
-
   "&::-webkit-scrollbar": {
     width: "8px",
     backgroundColor: "#F5F5F5",
-    borderRadius:"10px"
+    borderRadius: "10px",
   },
   "&::-webkit-scrollbar-thumb": {
     borderRadius: "10px",
     WebkitBoxShadow: " 0 0 6px rgba(0,0,0,.3)",
-    background:"#d7d7d7"
-  }
+    background: "#d7d7d7",
+  },
 };
 const DetailedNews = () => {
   const location = useLocation();
   const navigate = useNavigate();
-
+  const localFormData = useMemo(
+    () => JSON.parse(window?.localStorage?.getItem("commentFormData")) ?? {},
+    [JSON.parse(window?.localStorage?.getItem("commentFormData"))]
+  );
+  const [isChecked, setIsChecked] = useState(false);
+  const [dialogData, setDialogData] = useState({
+    actionBTNColor: "",
+    actionText: "",
+    title: "",
+    actionBTNHoverColor: "",
+  });
+  const [snackAlertData, setSnackAlertData] = useState({
+    message: "",
+    severity: "success",
+  });
+  const [open, setOpen] = useState(false);
+  const [openSnackAlert, setOpenSnackAlert] = useState(false);
+  const [formData, setFormData] = useState({
+    name: localFormData?.name,
+    email: localFormData?.email,
+    comment: "",
+  });
   const id = useMemo(
     () => +location?.pathname?.split("/")?.filter((x) => x !== "")[1],
     [location?.pathname]
   );
+
   const data = useMemo(
     () => NewsCards?.find((x) => x.newsId == id),
     [location.pathname]
@@ -39,8 +72,66 @@ const DetailedNews = () => {
     }
     navigate(`/news/${newsId}`);
   };
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((perv) => ({ ...perv, [name]: value }));
+    setIsChecked(false)
+  };
+  const handlePost = () => {
+    console.log(formData);
+  };
+  const removeDataFromLocally = () => {
+    window?.localStorage.removeItem("commentFormData");
+    setSnackAlertData({
+      message: "Data unsaved.",
+      severity: "success",
+    });
+   setFormData({
+      name: "",
+      email: "",
+    });
+    setOpenSnackAlert(true);
+    setIsChecked(false)
+  };
 
- 
+  
+  const handleSaveFormLocally = () => {
+    if (isChecked) {
+      setOpen(true);
+      setDialogData({
+        actionText: "Unsave",
+        actionBTNColor: "red",
+        actionBTNHoverColor: "#d50505",
+        title: "Are you sure to unsave your data?",
+      });
+
+      return setIsChecked(false);
+    }
+    for (let key in formData) {
+      if (key !== "comment" && !formData[key]) {
+        setSnackAlertData({
+          message: "Full Name and Email requierd.",
+          severity: "error",
+        });
+        setOpenSnackAlert(true);
+        return;
+      }
+    }
+    window?.localStorage.setItem("commentFormData", JSON.stringify(formData));
+    setSnackAlertData({
+      message: "Data saved.",
+      severity: "success",
+    });
+    setOpenSnackAlert(true);
+    setIsChecked(true);
+  };
+  useEffect(() => {
+    for(let key in localFormData){
+      if(key!=="comment"&& localFormData[key]){
+        setIsChecked(true)
+      }
+    }
+  }, []);
   return (
     <Box
       sx={{
@@ -167,21 +258,21 @@ const DetailedNews = () => {
         >
           <Box
             sx={{
-              position:"relative",
+              position: "relative",
               ...scrollbarStyles,
               flexBasis: {
                 xs: "100%",
                 sm: "100%",
                 lg: "100%",
               },
-              borderRadius: "10px", 
+              borderRadius: "10px",
               flexGrow: "1",
               flexShrink: "1",
               background: "#F8F7F0",
-              maxHeight:{
-                xs:"600px",
-                sm:"700px",
-                lg:"500px"
+              maxHeight: {
+                xs: "600px",
+                sm: "700px",
+                lg: "500px",
               },
               overflowY: "scroll", // Use auto to enable scrolling when content overflows
               boxSizing: "border-box",
@@ -450,9 +541,251 @@ const DetailedNews = () => {
           </Box>
         </Box>
       </Box>
+      <Box sx={{ maxWidth: "1200px", m: "auto" }}>
+        <Box
+          sx={{
+            maxWidth: "800px",
+            borderTop: 1,
+            borderColor: "#ECE7E2",
+            p: "30px 0",
+            boxSizing: "border-box",
+          }}
+        >
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              flexWrap: "wrap",
+              flexDirection: { xs: "column", sm: "row" },
+
+              justifyContent: "space-between",
+              gap: { xs: "50px", sm: "20px" },
+            }}
+          >
+            <Box sx={{ display: "flex", alignItems: "center", gap: "17px" }}>
+              <Typography
+                className="manRope800"
+                sx={{ lineHeight: "40px", fontSize: "16px" }}
+              >
+                Tags
+              </Typography>
+              <Box>
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "row",
+                    flexWrap: "wrap",
+                    justifyContent: {
+                      xs: "center",
+                      sm: "space-evenly",
+                      md: "center",
+                      lg: "start",
+                    },
+                    gap: "10px",
+                    boxSizing: "border-box",
+                    alignItems: "start",
+                  }}
+                >
+                  {data?.tags?.map((x, index) => {
+                    if (index < 2) {
+                      return (
+                        <Button
+                          isNavigate={false}
+                          key={index}
+                          BgColor={"#4BAF47"}
+                          hoverBgColor={"#47d742"}
+                          textColor="white"
+                          text={x}
+                        />
+                      );
+                    } else {
+                      return null; // Return null for elements beyond the first two
+                    }
+                  })}
+                </Box>
+              </Box>
+            </Box>
+            <Box
+              sx={{
+                display: "flex",
+                gap: "20px",
+                justifyContent: {
+                  xs: "space-around",
+                  sm: "center",
+                  lg: "start",
+                },
+              }}
+            >
+              {darkSocialMediaHandles.map((x, i) => (
+                <SocialIcon
+                  bgColor={"#F8F7F0"}
+                  src={x.src}
+                  alt={x.alt}
+                  link={x.link}
+                  key={i}
+                />
+              ))}
+            </Box>
+          </Box>
+          <Box
+            sx={{
+              display: "flex",
+              flexWrap: "wrap",
+              mt: "30px",
+              gap: "30px",
+            }}
+          >
+            {DetailedNewsFactCard?.map((x, i) => (
+              <Box
+                key={i}
+                sx={{
+                  flexBasis: "200px",
+                  flexGrow: "1",
+                  flexShrink: "1",
+                  background: "#F8F7F0",
+                  borderRadius: "10px",
+                  p: { xs: "30px", md: "50px" },
+                  boxSizing: "border-box",
+                  textAlign: { xs: "center", md: "left" },
+                }}
+              >
+                <Typography
+                  className="manRope800"
+                  sx={{ lineHeight: "33px", fontSize: "20" }}
+                >
+                  {x.text}
+                </Typography>
+              </Box>
+            ))}
+          </Box>
+          <Box
+            sx={{
+              mt: "47px",
+              display: "flex",
+              flexDirection: "column",
+              gap: "20px",
+            }}
+          >
+            <Typography
+              className="manRope800"
+              sx={{ lineHeight: "32px", fontSize: "26px" }}
+            >
+              Leave a Comment
+            </Typography>
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: { xs: "start", md: "center" },
+                flexWrap: { md: "wrap" },
+                gap: "3px",
+                flexDirection: { xs: "column-reverse", md: "row" },
+              }}
+            >
+              <Checkbox
+                onChange={handleSaveFormLocally}
+                checked={isChecked}
+                {...label}
+                sx={{
+                  p: "0",
+                  ml: "-3px",
+                  color: "#878680",
+                  "&.Mui-checked": {
+                    color: "green",
+                  },
+                }}
+              />
+              <Typography
+                className="manRope600"
+                sx={{
+                  lineHeight: "30px",
+                  fontSize: "16px",
+                  color: "secondary.main",
+                }}
+              >
+                Save my name, email, and website in this browser for the next
+                time I comment.
+              </Typography>
+            </Box>
+          </Box>
+          <form noValidate autoComplete="on">
+            <Box
+              sx={{
+                display: "flex",
+                gap: "30px",
+                boxSizing: "border-box",
+                mt: "5px",
+                flexWrap: "wrap",
+              }}
+            >
+              {newsInputs.map((x, i) => (
+                <Box
+                  key={i}
+                  sx={{
+                    flexBasis: "370px",
+                    flexGrow: "1",
+                    flexShrink: "1",
+                  }}
+                >
+                  <Input
+                    cb={handleInputChange}
+                    placeholder={x?.placeholder}
+                    name={x.name}
+                    // value ={handleFormValue(formData.name)}
+                    value={formData[x.name]}
+                    defaultValue={x?.defaultValue}
+                    fullWidth={true}
+                  />
+                </Box>
+              ))}
+            </Box>
+            <Box sx={{ mt: "30px" }}>
+              <Input
+                cb={handleInputChange}
+                placeholder="Write Comment"
+                minRows={8}
+                multiline={true}
+                fullWidth={true}
+                name={"comment"}
+              />
+            </Box>
+            <Box sx={{ mt: "30px" }}>
+              <Button
+                cb={handlePost}
+                text="Post Comment"
+                textColor="white"
+                BgColor={"#4BAF47"}
+                hoverBgColor={"#47d742"}
+                hoverTextColor="white"
+                fullWidth={false}
+                isNavigate={false}
+              />
+            </Box>
+          </form>
+        </Box>
+      </Box>
+      <Dialog
+        cb={removeDataFromLocally}
+        title={dialogData.title}
+        actionText={dialogData.actionText}
+        actionBTNColor={dialogData.actionBTNColor}
+        actionBTNHoverColor={dialogData.actionBTNHoverColor}
+        open={open}
+        handleClose={() => {
+          setOpen(false);
+        }}
+      />
+      <SnackAlert
+        anchorOrigin={{ vertical: "top", horizontal: "right" }}
+        duration={5000}
+        severity={snackAlertData.severity}
+        message={snackAlertData.message}
+        open={openSnackAlert}
+        handleClose={() => {
+          setOpenSnackAlert(false);
+        }}
+      />
     </Box>
   );
 };
-
 
 export default DetailedNews;
