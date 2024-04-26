@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import { Box  } from "@mui/material";
 import Heading from "../../Components/Heading/Heading";
-import { products } from "../../utils/utils";
+// import { products } from "../../utils/utils";
 import Product from "../../Components/Product/Product";
 import SnackAlert from "../../Components/SnackAlert/SnackAlert";
 import { updateCart } from "../../Redux/Slice/Slice";
 import { useSelector, useDispatch } from "react-redux";
+import { updateProductsCards } from "../../Redux/Slice/ProductSlice/ProductSlice";
+import CustomAnimatedButton from "../../Components/CustomAnimatedButton/CustomAnimatedButton";
 
 const Shop = () => {
+  const products = useSelector(state=> state.products)
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
@@ -41,6 +44,17 @@ const Shop = () => {
     dispatch(updateCart(...newItem));
     setOpen(true);
   };
+
+  if (products?.length ===0) {
+    return (
+        <CustomAnimatedButton
+          cb={() => {
+            dispatch(updateProductsCards(""));
+          }}
+          title={"Clear filter"}
+        />
+    );
+  }
   return (
     <>
       <Box

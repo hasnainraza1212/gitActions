@@ -13,9 +13,12 @@ import SocialIcon from "../SocialIcon/SocialIcon.jsx";
 import ContactComponent from "../ContactComponent/ContactComponent.jsx";
 import BreadCrum from "../BreadCrum/BreadCrum.jsx";
 import CartDrawer from "../CartDrawer/CartDrawer.jsx";
-import { filter } from "../../pages/News/News.jsx";
+import { useDispatch, useSelector } from "react-redux";
+import { upateNewsCards } from "../../Redux/Slice/NewsSlice/NewsSlice.js";
+import { updateProductsCards } from "../../Redux/Slice/ProductSlice/ProductSlice.js";
 const Header = () => {
-
+  const dispatch = useDispatch()
+  const news = useSelector(state=>state.news)
   const navigate = useNavigate();
   const {pathname} = useLocation()
   const [value, setValue] = React.useState(0);
@@ -40,10 +43,18 @@ const Header = () => {
     }
   }
   const cb=(id)=>{
+    console.log(input)
     if(id==="cart"){
      return setOpen(true)
     }
-    filter(input)
+    if(pathname?.toLowerCase().includes("news")){
+      return dispatch(upateNewsCards(input))
+      
+    }
+    if(pathname?.toLowerCase().includes("shop")){
+      console.log(input)
+      return dispatch(updateProductsCards(input))
+    }
   }
 
   return (
@@ -198,4 +209,4 @@ const Header = () => {
   );
 };
 
-export default React.memo(Header);
+export default Header;

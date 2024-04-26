@@ -15,8 +15,10 @@ const NewsItem = ({name, count, text,date, src, newsId}) => {
     flexGrow:"1",
     flexShrink:"1",
     borderRadius:"10px",
-    boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px"
-    
+    boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px",
+    maxWidth:{
+      lg:"380px",
+    }
       }}>
     <Box sx={{
       width:"100%",

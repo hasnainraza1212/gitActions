@@ -44,7 +44,7 @@ useEffect(()=>{
       <Route path="services" element={<Services />} />
       <Route path="farmers" element={<Services />} />
       <Route path="projects" element={<Projects />} />
-      <Route path="news" element={<News />} />
+      <Route path="news" element={<News somedata={"heeeeeee"}/>} />
       <Route path="news/:id" element={<DetailedNews />} />
       <Route path="shop" element={<Shop />} />
       <Route path="shop/product/order" element={<Shop />} />

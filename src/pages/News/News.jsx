@@ -1,16 +1,23 @@
 import React, { useCallback, useEffect } from "react";
 import NewItem from "../../Components/NewItem/NewItem";
-import { Box } from "@mui/material";
-import { NewsCards } from "../../utils/utils";
-export const filter = (value="") => {
-  const filteredData = NewsCards.filter((item) =>
-    item?.text?.toLocaleLowerCase()?.includes(value)
-  );
-  console.log(filteredData);
-  return filteredData;
-};
+import { Box, Typography } from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
+import { upateNewsCards } from "../../Redux/Slice/NewsSlice/NewsSlice";
+import CustomAnimatedButton from "../../Components/CustomAnimatedButton/CustomAnimatedButton";
 const News = () => {
- 
+  const news = useSelector((state) => state.news);
+  const dispatch = useDispatch();
+
+  if (news?.length < 1) {
+    return (
+        <CustomAnimatedButton
+          cb={() => {
+            dispatch(upateNewsCards(""));
+          }}
+          title={"Clear Filter"}
+        />
+    );
+  }
   return (
     <Box
       sx={{
@@ -23,7 +30,7 @@ const News = () => {
         m: "auto",
       }}
     >
-      {NewsCards.map((x, i) => (
+      {news.map((x, i) => (
         <NewItem
           key={i}
           newsId={x.newsId}

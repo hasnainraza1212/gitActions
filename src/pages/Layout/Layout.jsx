@@ -6,8 +6,6 @@ import { Box } from '@mui/material'
 import Drawer from '../../Components/Drawer/Drawer'
 
 const Layout = () => {
-  useEffect(()=>{
-  },[])
   return (
     <div className="layout">
       <Box sx={{
@@ -32,7 +30,7 @@ const Layout = () => {
         </Box>
       </Box>
       <div className='outlet'>
-        <Outlet />
+        <Outlet/>
       </div>
       <Footer/>
     </div>
