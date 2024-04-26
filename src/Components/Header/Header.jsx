@@ -12,11 +12,15 @@ import darklogo from "./../../assets/images/darklogo.png";
 import SocialIcon from "../SocialIcon/SocialIcon.jsx";
 import ContactComponent from "../ContactComponent/ContactComponent.jsx";
 import BreadCrum from "../BreadCrum/BreadCrum.jsx";
+import CartDrawer from "../CartDrawer/CartDrawer.jsx";
+import { filter } from "../../pages/News/News.jsx";
 const Header = () => {
 
   const navigate = useNavigate();
   const {pathname} = useLocation()
   const [value, setValue] = React.useState(0);
+  const [input, setInput] = React.useState("")
+  const [open, setOpen] = React.useState(true);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -34,6 +38,12 @@ const Header = () => {
     if(location.pathname !== "/"){
       return <BreadCrum/>
     }
+  }
+  const cb=(id)=>{
+    if(id==="cart"){
+     return setOpen(true)
+    }
+    filter(input)
   }
 
   return (
@@ -157,6 +167,9 @@ const Header = () => {
             >
               <FormControl sx={{ mr: 1 }}>
                 <OutlinedInput
+                onChange={(e)=>{setInput(e.target.value)}}
+                placeholder="Search..."
+                value={input}
                   sx={{
                     color: "secondary.main",
                     maxHeight: "36px",
@@ -167,18 +180,20 @@ const Header = () => {
             <Box
               sx={{
                 display: "flex",
+                gap:"30px",
+                padding:"0 30px",
+                alignItems:"center"
               }}
             >
-              {headerIcons.map((x, i) => (
-                <HeaderIcon key={i} component={x.icon} />
-                
-              ))}
+              {headerIcons.map((x, i) => {
+                return <HeaderIcon cb={cb} key={i} id={x.id}component={x.icon} />
+                })}
             </Box>
           </Box>
         </Box>
       </Box>
       {showCrumbs()}
-
+      <CartDrawer open={open} handleClose={()=>{setOpen(false)}} handleOpen={()=>{setOpen(true)}}/>
     </Box>
   );
 };

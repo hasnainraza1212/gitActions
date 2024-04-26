@@ -163,9 +163,11 @@ export const tabsArray = [
 export const headerIcons = [
   {
     icon: <img src={search}></img>,
+    id:"search"
   },
   {
     icon: <img src={cart}></img>,
+    id:"cart"
   },
 ];
 
@@ -564,5 +566,11 @@ export const pxToRem = (px) => {
   return `${(px / baseFontSize).toFixed(2)}rem`;
   
 };
+
+const filterData = (data, value, field)=>{
+  const filteredData = data.filter(item[field]===data[field])
+  return filterData.length<1?[]:filteredData
+}
+
 
 

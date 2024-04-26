@@ -1,6 +1,5 @@
-import React, { useCallback, useEffect, useState } from "react";
-import { Box, Typography } from "@mui/material";
-import axios from "axios";
+import React, { useState } from "react";
+import { Box  } from "@mui/material";
 import Heading from "../../Components/Heading/Heading";
 import { products } from "../../utils/utils";
 import Product from "../../Components/Product/Product";
@@ -42,9 +41,6 @@ const Shop = () => {
     dispatch(updateCart(...newItem));
     setOpen(true);
   };
-
-
-
   return (
     <>
       <Box
