@@ -1,22 +1,25 @@
 import { Box, Typography } from "@mui/material";
 import { memo } from "react";
 import { useSelector } from "react-redux";
-const HeaderIcon = ({ component = <></>, id = "", cb=()=>{} }) => {
+const HeaderIcon = ({ component = <></>, id = "", cb = () => {} }) => {
   const cart = useSelector((state) => state.cart);
 
   return (
-    <Box onClick={()=>{cb(id)}} sx={{ position: "relative", cursor:"pointer" }}>
-      <Box sx={{userSelect:"none"}}>
-
-      {component}
-      </Box>
+    <Box
+      onClick={() => {
+        cb(id);
+      }}
+      sx={{ position: "relative", cursor: "pointer" }}
+    >
+      <Box sx={{ userSelect: "none" }}>{component}</Box>
       {id === "cart" && (
+       cart?.length > 0 &&
         <Box
           sx={{
             position: "absolute",
-            top: "-12px",
-            padding:"12px",
-            right: "-28px",
+            top: "-7px",
+            padding: "8px",
+            right: "-18px",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -24,27 +27,27 @@ const HeaderIcon = ({ component = <></>, id = "", cb=()=>{} }) => {
             borderRadius: "50%",
             height: "8px",
             width: "8px",
-            userSelect:"none"
+            userSelect: "none",
+            color: "white",
+            fontSize: "11px",
           }}
         >
-          {cart?.length > 9 
-          ? (
-           <Box sx={{m:"0", position:"relative", color:"white"}}>
-              <Typography sx={{mb:"-2px", ml:"-2px", fontWeight:"bold"}}>
-9
-              </Typography>
-              <Typography sx={{
-                m:"0",
-                position:"absolute",
-                top:"-6px",
-                right:"-9px"
-              }}>
+          {cart?.length > 9 ? (
+            <Box sx={{ m: "0", position: "relative", color: "white" }}>
+              <Typography sx={{ mb: "-2px", ml: "-2px",  fontSize: "11px"}}>9</Typography>
+              <Typography
+                sx={{
+                  m: "0",
+                  position: "absolute",
+                  top: "-3.5px",
+                  right: "-8px",
+                  fontSize: "11px"
+                }}
+              >
                 +
               </Typography>
-           </Box>
-          ) 
-          : 
-          (
+            </Box>
+          ) : (
             cart.length
           )}
         </Box>

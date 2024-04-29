@@ -1,48 +1,45 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { Box  } from "@mui/material";
 import Heading from "../../Components/Heading/Heading";
 // import { products } from "../../utils/utils";
 import Product from "../../Components/Product/Product";
 import SnackAlert from "../../Components/SnackAlert/SnackAlert";
-import { updateCart } from "../../Redux/Slice/Slice";
+import { addItemInCart } from "../../Redux/Slice/CartSlice/CartSlice"; 
 import { useSelector, useDispatch } from "react-redux";
 import { updateProductsCards } from "../../Redux/Slice/ProductSlice/ProductSlice";
 import CustomAnimatedButton from "../../Components/CustomAnimatedButton/CustomAnimatedButton";
+import { handleSnackAlert } from "../../Redux/Slice/SnackAlertSlice/SnackAlertSlice";
 
 const Shop = () => {
   const products = useSelector(state=> state.products)
-  const cart = useSelector((state) => state.cart);
+  const snackAlert = useSelector(state=>state.snackAlert)
+  let cart = useSelector((state) => state?.cart)
   const dispatch = useDispatch();
-  const [open, setOpen] = useState(false);
-  const [cartDetails, setCartDetails] = useState({
-    message: "",
-    severity: "success",
-  });
-
   const cb = (data) => {
     const existingItem = cart.some((item) => item?.id === data?.id);
     if (existingItem) {
-      setCartDetails({
+      return dispatch(handleSnackAlert({
+        open:true,
         severity: "error",
         message: `${data?.name} already added into cart.`,
-      });
-      return setOpen(true);
+      }))
+      
     }
-    setCartDetails({
+    dispatch(handleSnackAlert({
+      open:true,
       severity: "success",
       message: `${data?.name} added to cart.`,
-    });
-
+    }))
     let newItem = [data]?.map((item) => {
       const { src, ...rest } = item;
-      return rest;
+      return {...rest, count:1};
     });
-    window?.localStorage?.setItem(
-      "cart",
-      JSON.stringify([...cart, ...newItem])
-    );
-    dispatch(updateCart(...newItem));
-    setOpen(true);
+    // window?.localStorage?.setItem(
+    //   "cart",
+    //   JSON.stringify([...cart, ...newItem])
+    // );
+    dispatch(addItemInCart(...newItem));
+  
   };
 
   if (products?.length ===0) {
@@ -55,6 +52,7 @@ const Shop = () => {
         />
     );
   }
+
   return (
     <>
       <Box
@@ -116,12 +114,12 @@ const Shop = () => {
         </Box>
       </Box>
       <SnackAlert
-        severity={cartDetails.severity}
-        message={cartDetails.message}
+        severity={snackAlert.severity}
+        message={snackAlert.message}
         handleClose={() => {
-          setOpen(false);
+          dispatch(handleSnackAlert({open:false}))
         }}
-        open={open}
+        open={snackAlert.open}
       />
     </>
   );

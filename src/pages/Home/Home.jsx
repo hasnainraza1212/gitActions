@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useMemo } from "react";
 import hero from "./../../assets/images/hero.png";
 import v from "./../../assets/images/v.png";
 import featureManAndFlower from "./../../assets/images/featureManAndFlower.png";
@@ -20,7 +20,40 @@ import ChecklistItem from "../../Components/ChecklistItem/ChecklistItem";
 import Heading from "../../Components/Heading/Heading";
 import Product from "../../Components/Product/Product";
 import VeggiesCard from "../../Components/VeggiesCard/VeggiesCard";
+import SnackAlert from "../../Components/SnackAlert/SnackAlert";
+import { useDispatch, useSelector } from "react-redux";
+import { handleSnackAlert } from "../../Redux/Slice/SnackAlertSlice/SnackAlertSlice";
+import { addItemInCart } from "../../Redux/Slice/CartSlice/CartSlice";
 const Home = () => {
+  const snackAlert = useSelector(state=>state.snackAlert)
+  let cart = useSelector((state) => state?.cart)
+  const dispatch = useDispatch();
+  const cb = (data) => {
+    const existingItem = cart.some((item) => item?.id === data?.id);
+    if (existingItem) {
+      return dispatch(handleSnackAlert({
+        open:true,
+        severity: "error",
+        message: `${data?.name} already added into cart.`,
+      }))
+      
+    }
+    dispatch(handleSnackAlert({
+      open:true,
+      severity: "success",
+      message: `${data?.name} added to cart.`,
+    }))
+    let newItem = [data]?.map((item) => {
+      const { src, ...rest } = item;
+      return {...rest, count:1};
+    });
+    // window?.localStorage?.setItem(
+    //   "cart",
+    //   JSON.stringify([...cart, ...newItem])
+    // );
+    dispatch(addItemInCart(...newItem));
+  
+  };
   return (
     <Box>
       {/* Hero section */}
@@ -401,9 +434,12 @@ const Home = () => {
               }}>
                 <Product
                   name={x.name}
+                  id={x.id}
                   price={x.price}
                   src={x.src}
                   rating={x.rating}
+                cb={cb}
+
                 />
               </Box>
             ))}
@@ -494,6 +530,14 @@ const Home = () => {
             </Box>
 
       </Box>
+      <SnackAlert
+        severity={snackAlert.severity}
+        message={snackAlert.message}
+        handleClose={() => {
+          dispatch(handleSnackAlert({open:false}))
+        }}
+        open={snackAlert.open}
+      />
     </Box>
   );
 };

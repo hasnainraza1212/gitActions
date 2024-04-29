@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { store } from './Redux/Store/Store.js';
+import { persistor, store } from './Redux/Store/Store.js';
+import { PersistGate } from 'redux-persist/integration/react';
 import { Provider } from 'react-redux'
 const theme = createTheme({
   palette: {
@@ -30,7 +31,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
      <ThemeProvider theme={theme}>
       <Provider store={store}>
-          <App />
+      <PersistGate loading={null} persistor={persistor}>
+      <App />
+    </PersistGate>
       </Provider>
      </ThemeProvider>
   </React.StrictMode>,

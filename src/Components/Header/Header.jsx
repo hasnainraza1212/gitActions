@@ -23,7 +23,7 @@ const Header = () => {
   const {pathname} = useLocation()
   const [value, setValue] = React.useState(0);
   const [input, setInput] = React.useState("")
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -43,20 +43,22 @@ const Header = () => {
     }
   }
   const cb=(id)=>{
-    console.log(input)
     if(id==="cart"){
      return setOpen(true)
     }
+
     if(pathname?.toLowerCase().includes("news")){
+           dispatch(upateNewsCards(""))
       return dispatch(upateNewsCards(input))
       
     }
+
     if(pathname?.toLowerCase().includes("shop")){
-      console.log(input)
+      dispatch(updateProductsCards(""))
       return dispatch(updateProductsCards(input))
     }
-  }
 
+  }
   return (
     <Box sx={{ width: "100%" }}>
       <Box
@@ -209,4 +211,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default React.memo(Header);

@@ -2,8 +2,6 @@ import { createSlice } from '@reduxjs/toolkit'
 import { NewsCards } from '../../../utils/utils'
 
 const initialState = [...NewsCards]
-console.log(NewsCards)
-
 export const NewsSlice = createSlice({
     name:"news",
     initialState,

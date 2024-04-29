@@ -8,11 +8,12 @@ export const ProductSlice = createSlice({
     initialState,
     reducers: {
         updateProductsCards: (state, action) => {
-            const query = (action.payload || "").toLowerCase();
+            const query = (action.payload).toLowerCase();
             if (query === "") {
                 return initialState; // Return initial state when query is empty
+            }else{
+                return state.filter(item => item?.name?.toLowerCase()?.includes(query));
             }
-            return state.filter(item => item?.name?.toLowerCase()?.includes(query));
         }
     }
 });
